@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@{
+    var total = 0;
+    var totalMessage = "";
+    if (IsPost)
+    {
+        // Lấy giá trị nhập từ form
+        var num1 = Request["text1"];
+        var num2 = Request["text2"];
+        // Chuyển thành số nguyên và cộng
+        total = num1.AsInt() + num2.AsInt();
+        // Gán kết quả vào biến
+        totalMessage = "Total = " + total;
+    }
+}
+
+
+<p>Nhập hai số nguyên <strong>Add</strong>.</p>
+<form action="" method="post">
+    <p>
+        <label for="text1">Số thứ nhất:</label>
+        <input type="text" name="text1" />
+    </p>
+    <p>
+        <label for="text2">Số thứ hai:</label>
+        <input type="text" name="text2" />
+    </p>
+    <p><input type="submit" value=" Cộng " /></p>
+</form>
+<p>@totalMessage</p>
